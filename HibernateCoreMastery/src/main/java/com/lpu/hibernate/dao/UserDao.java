@@ -56,17 +56,40 @@ public class UserDao {
         }
     }
 
-    public void deleteUser(int id){
-        try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            Transaction tx=session.beginTransaction();
-            User user=session.get(User.class,id);
-            if(user!=null){
+    public void deleteUser(int id) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx = session.beginTransaction();
+            User user = session.get(User.class, id);
+            if (user != null) {
                 session.remove(user);
                 tx.commit();
                 System.out.println("User deleted successfully!");
-            }else{
+            } else {
                 System.out.println("User not found");
             }
+        }
+    }
+
+    public void dynamicUpdate(int id, String field, String newValue) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx = session.beginTransaction();
+            User user = session.get(User.class, id);
+            if (user == null) {
+                System.out.println("User not found");
+                return;
+            }
+
+            if ("name".equalsIgnoreCase(field)) {
+                user.setName(newValue);
+            } else if ("email".equalsIgnoreCase(field)) {
+                user.setEmail(newValue);
+            } else {
+                System.out.println("Invalid field");
+                return;
+            }
+
+            tx.commit();
+
         }
     }
 }
