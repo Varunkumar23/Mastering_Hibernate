@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database Connection Settings -->
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/hibernate_db
+        </property>
+
+        <property name="hibernate.connection.username">
+            root
+        </property>
+
+        <property name="hibernate.connection.password">
+            Svarunkumar@09
+        </property>
+
+        <!-- SQL Dialect -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+
+        <!-- Show SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Auto Table Creation -->
+        <property name="hibernate.hbm2ddl.auto">
+            update
+        </property>
+
+        <!-- Entity Mapping -->
+        <mapping class="com.lpu.StudentManagement.entity.Student"/>
+        <mapping class="com.lpu.StudentManagement.entity.Course"/>
+        <mapping class="com.lpu.StudentManagement.entity.Enrollment"/>
+
+
+    </session-factory>
+
+</hibernate-configuration>
