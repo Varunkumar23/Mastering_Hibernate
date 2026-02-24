@@ -3,6 +3,9 @@ package com.lpu.StudentManagement.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "courses")
 public class Course {
@@ -15,6 +18,9 @@ public class Course {
     private String title;
 
     private int duration;
+
+    @OneToMany(mappedBy = "course")
+    private List<Enrollment> enrollments=new ArrayList<>();
 
     public Course() {
     }
