@@ -28,6 +28,9 @@ public class Student {
         this.name = name;
         this.email = email;
     }
+    public List<Enrollment> getEnrollments(){
+        return enrollments;
+    }
 
     public Long getId() {
         return id;

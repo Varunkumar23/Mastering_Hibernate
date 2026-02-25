@@ -17,16 +17,17 @@ public class StudentDao {
         }
     }
 
-    public void getStudentById(int id) {
+    public Student getStudentById(int id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             Student student = session.get(Student.class, id);
             if (student != null) {
-                System.out.println(student);
+                return student;
             } else {
                 System.out.println("Student not found");
             }
         }
+        return null;
     }
 
     public List<Student> getAllStudents() {

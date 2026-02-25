@@ -22,12 +22,18 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Enrollment> enrollments=new ArrayList<>();
 
+
     public Course() {
     }
 
     public Course(String title, int duration) {
         this.title = title;
         this.duration = duration;
+    }
+
+
+    public List<Enrollment> getEnrollments(){
+        return enrollments;
     }
 
     public Long getId() {
